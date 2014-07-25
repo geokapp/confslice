@@ -105,12 +105,12 @@ data_server: {
    hostname = "blade";
    disk.1: {
       disk_size = "1T";
-      journal_siz = 10000;
+      journal_size = 10000;
    };
    admin = {
       username = "root";
       realname = "Super Admin";
-      groups = <1000,1010,1011>;
+      uid = 0;
    };
 };
 security = "kerberos";

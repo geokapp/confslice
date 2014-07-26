@@ -35,7 +35,8 @@ class Data {
   {
     int_t,
     double_t,
-    string_t
+    string_t,
+    none_t
   };
 
  private:
@@ -43,17 +44,22 @@ class Data {
   std::string m_data;
 
  public: 
-  Data(const Data::Type type);
-  Data();
+  explicit Data(const Data::Type type);
+  explicit Data();
   ~Data();
   
-  void set_type(const Data::Type type);
   Data::Type type();
-  void set_data(const std::string data);
+  void set_data(const std::string data, const Data::Type type);
   template<typename T> 
   T data() {
     T result;
-    std::stringstream ss(m_data);
+    std::stringstream ss(std::stringstream::in | std::stringstream::out);
+    if (m_type == double_t) {
+      // Keep precision.
+      ss.precision(m_data.length());
+      ss << std::fixed;
+    }    
+    ss << m_data;
     ss >> result;
     return result;
   }

@@ -98,16 +98,16 @@ int32_t LexAnalyzer::analyze(string &word) {
   
   // The state table. 
   const int32_t STATES[STATESIZE][SSIZE] = {
-    //ws,  lt   dg  EOL  EOF    /    "    \    -    _    .    o
-    {ST0, ST1, ST2, ST0,  OK, ST3, ST5,  OK, ST8,  OK,  OK,  OK}, // 0
-    { BK, ST1, ST1,  BK,  BK,  BK,  BK,  BK, ST1, ST1, ST1,  BK}, // 1 
-    { BK,  BK, ST2,  BK,  BK,  BK,  BK,  BK,  BK,  BK, ST7,  BK}, // 2
-    { BK,  BK,  BK,  BK,  BK, ST4,  BK,  BK,  BK,  BK,  BK,  BK}, // 3
-    {ST4, ST4, ST4, ST0, ERR, ST4, ST4, ST4, ST4, ST4, ST4, ST4}, // 4
-    {ST5, ST5, ST5, ERR, ERR, ST5,  OK, ST6, ST5, ST5, ST5, ST5}, // 5
-    {ST5, ST5, ST5, ERR, ERR, ST5, ST5, ST6, ST5, ST5, ST5, ST5}, // 6
-    { BK, BK,  ST7,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK}, // 7
-    { BK, BK,  ST2,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK}, // 8
+    //ws,  lt   dg  EOL  EOF    /    "    \    -    _    .    +    o
+    {ST0, ST1, ST2, ST0,  OK, ST3, ST5,  OK, ST8,  OK, ST7, ST8,  OK}, // 0
+    { BK, ST1, ST1,  BK,  BK,  BK,  BK,  BK, ST1, ST1, ST1, ST1,  BK}, // 1 
+    { BK,  BK, ST2,  BK,  BK,  BK,  BK,  BK,  BK,  BK, ST7,  BK,  BK}, // 2
+    { BK,  BK,  BK,  BK,  BK, ST4,  BK,  BK,  BK,  BK,  BK,  BK,  BK}, // 3
+    {ST4, ST4, ST4, ST0, ERR, ST4, ST4, ST4, ST4, ST4, ST4, ST4, ST4}, // 4
+    {ST5, ST5, ST5, ERR, ERR, ST5,  OK, ST6, ST5, ST5, ST5, ST5, ST5}, // 5
+    {ST5, ST5, ST5, ERR, ERR, ST5, ST5, ST6, ST5, ST5, ST5, ST5, ST5}, // 6
+    { BK, BK,  ST7,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK}, // 7
+    { BK, BK,  ST2,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK,  BK}, // 8
   };
  
   // The defined words.

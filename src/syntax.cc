@@ -23,13 +23,8 @@
 using namespace std;
 
 /**
- * ----------------------------------------------------------
- * Class: SyntaxAnalyzer
- * ----------------------------------------------------------
- */
-
-/**
- * SyntaxAnalyzer - Constructor.
+ * @name SyntaxAnalyzer - Constructor.
+ * @param gc: A pointer to a global context object.
  *
  * Creates the configuration and lectical analyzer objects.
  */
@@ -40,7 +35,7 @@ SyntaxAnalyzer::SyntaxAnalyzer(GlobalContext *gc) {
 }
 
 /**
- * SyntaxAnalyzer - Destructor.
+ * @name SyntaxAnalyzer - Destructor.
  *
  * Deletes the configuration and lectical analyzer objects.
  */
@@ -52,28 +47,34 @@ SyntaxAnalyzer::~SyntaxAnalyzer() {
 }
 
 /**
- * open - Open a file.
- * @filename: The filename.
+ * @name open - Open a file.
+ * @param filename: The filename.
  *
  * Loads a new configuration file for analysis.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t SyntaxAnalyzer::open(const string filename) {
   return (m_lex->open(filename));
 }
 
 /**
- * close - Close the file.
+ * @name close - Close the file.
  *
  * Close the configuration file if it is already opened.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t SyntaxAnalyzer::close() {
   return m_lex->close();
 }
 
 /**
- * analyze - Begin the syntax analysis.
+ * @name analyze - Begin the syntax analysis.
  *
  * Close the configuration file if it is already opened.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t SyntaxAnalyzer::analyze(Configuration *conf_ptr) {
   int32_t result = begin(conf_ptr);

@@ -21,13 +21,7 @@
 using namespace std;
 
 /**
- * ----------------------------------------------------------
- * Class: ConfSlice
- * ----------------------------------------------------------
- */
-
-/**
- * ConfSlice - Constructor.
+ * @name ConfSlice - Constructor.
  *
  * Creates the confslice object.
  */
@@ -38,7 +32,7 @@ ConfSlice::ConfSlice() {
 }
 
 /**
- * ConfSlice - Destructor.
+ * @name ConfSlice - Destructor.
  *
  * Deletes the the ConfSlice object and frees memory resources.
  */
@@ -52,10 +46,12 @@ ConfSlice::~ConfSlice() {
 }
 
 /**
- * analyze - Begin the configuration analysis.
- * @filename: The filename of a configuration file.
+ * @name analyze - Begin the configuration analysis.
+ * @param filename: The filename of a configuration file.
  *
- * Analyzes a configuration file.
+ * Loads and analyzes a configuration file.
+ *
+ * @return 0 if the analysis was successfull, otherwise 1.
  */
 int32_t ConfSlice::analyze(string filename) {
   int32_t result;
@@ -65,7 +61,14 @@ int32_t ConfSlice::analyze(string filename) {
 
   return result;
 }
-
+/**
+ * @name configuration - Return the configuration
+ *
+ * Returns either a pointer to a valid configuration scheme or NULL.
+ * It should be called after analyze() method.
+ *
+ * @return A poitner to a configuration object or NULL.
+ */
 Configuration *ConfSlice::configuration() {
   return m_configuration;
 }

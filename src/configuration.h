@@ -23,7 +23,7 @@
 #include <utility>
 
 /**
- * Data - The data object.
+ * @name Data - The data object.
  *
  * This class defines the data object. it uses a string buffer to store
  * the data. The data can be either a string, an itneger, or a double.
@@ -68,7 +68,7 @@ class Data {
 };
 
 /**
- * Key - The Key object.
+ * @name Key - The Key object.
  *
  * This class defines the base key object which holds its type.
  */
@@ -112,7 +112,7 @@ class KPairs : public Key {
 };
 
 /**
- * KList - The Key List.
+ * @name KList - The Key List.
  *
  * This class defines a key list object which holds a list
  * of data objects or a list of lists.
@@ -145,9 +145,8 @@ class KList : public Key {
   int32_t size_of_klist();
 };
 
-
 /**
- * KArray - The Key Array.
+ * @name KArray - The Key Array.
  *
  * This class defines a key array object which holds an array
  * of data objects.
@@ -165,7 +164,7 @@ class KArray : public Key {
  };
 
 /**
- * KValue - The Key Value.
+ * @name KValue - The Key Value.
  *
  * This class defines a key value object which holds a single
  * data object.
@@ -182,6 +181,15 @@ class KValue : public Key {
   Data value();
 };
 
+/**
+ * @name Entity - The Entity object.
+ *
+ * This class defines the entity object which is used to describe an
+ * independent component. It holds the entity ID, as well as two lists:
+ * one that holds the 1-level nested entities and another one that holds
+ * the keys. It also includes two iterators which help to get the
+ * contained entities and keys.
+ */
 class Entity {
  private:
   std::string m_id;
@@ -216,6 +224,14 @@ class Entity {
   int32_t size_of_entities();
 };
 
+/**
+ * @name Configuration - The Configuration object.
+ *
+ * This class defines the configuration object which is used to describe
+ * a system. It holds two lists: one that holds the 1-level entities and
+ * another one that holds the keys. It also includes two iterators which
+ * help to get the contained entities and keys.
+ */
 class Configuration {
  private:
   std::list<Key *> m_keys;

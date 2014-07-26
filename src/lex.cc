@@ -22,7 +22,7 @@
 using namespace std;
 
 /**
- * LexAnalyzer - Constructor.
+ * @name LexAnalyzer - Constructor.
  *
  * This method initializes the LexAnalyzer object.
  */
@@ -32,7 +32,7 @@ LexAnalyzer::LexAnalyzer() {
 }
 
 /**
- * ~LexAnalyzer - Destructor.
+ * @name ~LexAnalyzer - Destructor.
  *
  * This method cleans the LexAnalyzer object. It closes the input file if
  * it is still open.
@@ -46,18 +46,23 @@ LexAnalyzer::~LexAnalyzer() {
 }
 
 /**
- * line - Return the current line number.
+ * @name line - Line number.
  *
+ * Return the current line number.
+ *
+ * @return The line number.
  */
 uint32_t LexAnalyzer::line() {
   return m_line;
 }
 
 /**
- * open - Open the input file
- * @file: The filename.
+ * @name open - Open the input file
+ * @param file: The filename.
  *
  * This method loads a configuration file to the analyzer.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t LexAnalyzer::open(const string file) {
   if (!(m_file = fopen(file.c_str(), "r"))) {
@@ -69,9 +74,11 @@ int32_t LexAnalyzer::open(const string file) {
 }
 
 /**
- * close - Close the input file.
+ * @name close - Close the input file.
  *
  * This method closes the input file.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t LexAnalyzer::close() {
   int32_t status = -1;
@@ -83,13 +90,13 @@ int32_t LexAnalyzer::close() {
 }
 
 /**
- * analyzer.
- * @word: The identified token.
+ * @name analyze - Lexixal analyzer.
+ * @param word: A reference to the identified token.
  
  * This method parses the configuration file and returns the next identified
  * token and its ID.
  *
- * Return value: Token ID.
+ * @return Token ID or -1 on error.
  */
 int32_t LexAnalyzer::analyze(string &word) {
   // If the input file has not been opened immediately return.
@@ -167,11 +174,12 @@ int32_t LexAnalyzer::analyze(string &word) {
 }
 
 /**
- * get_id - Returns the ID of a symbol.
+ * @name get_id - Returns the ID of a symbol.
+ * @param c: A character.
  *
  * This method returns the ID of a input symbol.
  *
- * Return value: Symbol ID.
+ * @return Symbol ID.
  */
 int32_t LexAnalyzer::get_id(const char c) {
   char symbols[SSIZE]= {'x','x','x','\n', EOF, '/', '\"', '\\', '-', '_', 'x'};

@@ -22,7 +22,7 @@
 #include "lex.h"
 
 /**
- * SyntaxAnalyzer - The syntax analyzer object.
+ * @name SyntaxAnalyzer - The syntax analyzer object.
  *
  * This class defines the syntax analyzer object. It is used to parse and
  * syntactically analyze configuration files. It builds a configuration object

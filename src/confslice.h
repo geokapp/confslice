@@ -21,7 +21,7 @@
 #include "syntax.h"
 
 /**
- * ConfSlice - The configuration slicer object.
+ * @name ConfSlice - The configuration slicer object.
  *
  * This is the main object of confslice. It contains a global context object,
  * the syntax analyzer, as well as a pointer to a congiguration. You can use

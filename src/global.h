@@ -18,7 +18,7 @@
 #include "configuration.h"
 
 /**
- * GlobalContext - The global context object.
+ * @name GlobalContext - The global context object.
  *
  * This class defiens the global context object that contain global
  * variables between other objects that are able to see the same

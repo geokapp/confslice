@@ -46,9 +46,9 @@ Configuration file general syntax
 Here we give a basic overview of the configuration file syntax. You can find
 a detailed description of its grammar and syntax in docs/GRAMMAR.md.
 
-The configuration files that cofslice understands can contain a) entities and
+The configuration files that confslice understands can contain a) entities and
 b) keys. Entities represent independent components and can contain other entities
-or keys. It can be defined as follows:
+or keys. An entity can be defined as follows:
 
 
 ```
@@ -61,7 +61,7 @@ an_entity: {
 };
 ```
 
-Keys represent characteritics and can be associated with an entity or the 
+Keys represent characteristics and can be associated with an entity or the 
 global configuration. Confslice understands four different types of keys:
 
 1. **Key-Value**
@@ -77,7 +77,7 @@ global configuration. Confslice understands four different types of keys:
    `small_array = [4, 5, 3, 1000];`
 
 3. **List**
-   This type of key contains an ID and a list of values and sublists and can 
+   This type of key contains an ID and a list of values and sub-lists and can 
    be defined as follows:
 
    `groups = <100, 300, <43, 2, <12, 3>, 9>, 10>;`

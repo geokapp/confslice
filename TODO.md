@@ -5,9 +5,9 @@ TODO list
    **Description**
       Create more unit tests to check the correction of confslice. We need
       to create tests in order to validate the correction of:
-      a) The lectical analyzer,
-      b) the sytnax analyzer,
-      c) The configuration shcema.
+      a) The lexical analyzer,
+      b) the syntax analyzer,
+      c) The configuration schema.
    **Created**
       25-7-2014
    **Resolved**
@@ -25,7 +25,7 @@ TODO list
 
 3. Example configuration files.
    **Description**
-      Add more confgiguration fiels under the examples directory.
+      Add more configuration files under the examples directory.
    **Created**
       25-7-2014
    **Resolved**

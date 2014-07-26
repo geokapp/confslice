@@ -23,13 +23,8 @@
 using namespace std;
 
 /**
- * ----------------------------------------------------------
- * Class: SyntaxAnalyzer
- * ----------------------------------------------------------
- */
-
-/**
- * SyntaxAnalyzer - Constructor.
+ * @name SyntaxAnalyzer - Constructor.
+ * @param gc: A pointer to a global context object.
  *
  * Creates the configuration and lectical analyzer objects.
  */
@@ -40,7 +35,7 @@ SyntaxAnalyzer::SyntaxAnalyzer(GlobalContext *gc) {
 }
 
 /**
- * SyntaxAnalyzer - Destructor.
+ * @name SyntaxAnalyzer - Destructor.
  *
  * Deletes the configuration and lectical analyzer objects.
  */
@@ -52,28 +47,34 @@ SyntaxAnalyzer::~SyntaxAnalyzer() {
 }
 
 /**
- * open - Open a file.
- * @filename: The filename.
+ * @name open - Open a file.
+ * @param filename: The filename.
  *
  * Loads a new configuration file for analysis.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t SyntaxAnalyzer::open(const string filename) {
   return (m_lex->open(filename));
 }
 
 /**
- * close - Close the file.
+ * @name close - Close the file.
  *
  * Close the configuration file if it is already opened.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t SyntaxAnalyzer::close() {
   return m_lex->close();
 }
 
 /**
- * analyze - Begin the syntax analysis.
+ * @name analyze - Begin the syntax analysis.
  *
  * Close the configuration file if it is already opened.
+ *
+ * @return 0 on success, 1 on error.
  */
 int32_t SyntaxAnalyzer::analyze(Configuration *conf_ptr) {
   int32_t result = begin(conf_ptr);
@@ -239,12 +240,12 @@ int32_t SyntaxAnalyzer::key_array(Configuration *conf_ptr, const string id) {
       // Add this value to the array.
       Data data;
       if (m_token_id == INTEGER_TK)
-	data.set_type(Data::int_t);
+	data.set_data(m_token_str, Data::int_t);
       else if (m_token_id == STRING_TK)
-	data.set_type(Data::string_t);
+	data.set_data(m_token_str, Data::string_t);
       else
-	data.set_type(Data::double_t);
-      data.set_data(m_token_str);
+	data.set_data(m_token_str, Data::double_t);
+      
       (*ka)[index] = data;
       
     } else {
@@ -289,12 +290,12 @@ int32_t SyntaxAnalyzer::key_list(Configuration *conf_ptr, const string id, KList
       // add this to the list.
       Data data;
       if (m_token_id == INTEGER_TK)
-	data.set_type(Data::int_t);
+	data.set_data(m_token_str, Data::int_t);
       else if (m_token_id == STRING_TK)
-	data.set_type(Data::string_t);
+	data.set_data(m_token_str, Data::string_t);
       else
-	data.set_type(Data::double_t);
-      data.set_data(m_token_str);
+	data.set_data(m_token_str, Data::double_t);
+
       (*klist)->insert_data(data);
     } else if (m_token_id == LBRACKETS4_TK) {
       KList *klist_nested = NULL;
@@ -362,14 +363,11 @@ int32_t SyntaxAnalyzer::key_pairs(Configuration *conf_ptr, const string id) {
 	  // Put this pair to the key.
 	  Data data;
 	  if (m_token_id == INTEGER_TK)
-	    data.set_type(Data::int_t);
+	    data.set_data(m_token_str, Data::int_t);
 	  else if (m_token_id == STRING_TK)
-	    data.set_type(Data::string_t);
+	    data.set_data(m_token_str, Data::string_t);
 	  else
-	    data.set_type(Data::double_t);
-	  data.set_data(m_token_str);
-	  kp_ptr->insert(pair_id, data);
-	  
+	    data.set_data(m_token_str, Data::double_t);
 	} else {
 	  fprintf(stderr, "Error at line %d: %s is not allowed here. A value was expected.\n",
 		  m_lex->line(), m_token_str.c_str());

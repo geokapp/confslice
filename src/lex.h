@@ -31,7 +31,8 @@
 #define MINUS        8  // -
 #define UNDERSCORE   9  // _
 #define PERIOD       10 // .
-#define OTHER        11 // other symbols
+#define PLUS         11 // +
+#define OTHER        12 // other symbols
 
 // Tokens
 #define ID_TK        40 // ID name, eg. variable
@@ -68,7 +69,7 @@
 #define ERR 102
 
 #define WSIZE          100
-#define SSIZE           12
+#define SSIZE           13
 #define STATESIZE        9
 #define DSIZE           12
 

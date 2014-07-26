@@ -19,13 +19,7 @@
 using namespace std;
 
 /**
- * ----------------------------------------------------------
- * Class: GlobalContext
- * ----------------------------------------------------------
- */
-
-/**
- * GlobalContext - Constructor.
+ * @name GlobalContext - Constructor.
  *
  * Creates a new GlobalContext object.
  */
@@ -34,7 +28,7 @@ GlobalContext::GlobalContext() {
 }
 
 /**
- * GlobalContext - Destructor.
+ * @name GlobalContext - Destructor.
  *
  * Destroys the GlobalContext object.
  */
@@ -45,15 +39,23 @@ GlobalContext::~GlobalContext() {
 }
 
 /**
- * set_current_entity - Set the current entity.
- * @entity: The entity object.
+ * @name set_current_entity - Set the current entity.
+ * @param entity: The entity object.
+ *
+ * Sets the current entity.
+ *
+ * @return Void.
  */
 void GlobalContext::set_current_entity(Entity *entity) {
   m_current_entity = entity;
 }
 
 /**
- * current_entity - Return the current entity.
+ * @name current_entity - Return the current entity.
+ *
+ * Returns the current entity.
+ *
+ * @return A pointer to an entity obeject or NULL.
  */
 Entity *GlobalContext::current_entity() {
   return m_current_entity;

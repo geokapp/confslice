@@ -53,6 +53,7 @@ ConfSlice::~ConfSlice() {
 
 /**
  * analyze - Begin the configuration analysis.
+ * @filename: The filename of a configuration file.
  *
  * Analyzes a configuration file.
  */

@@ -40,11 +40,11 @@ Data::Data(const Data::Type type) {
 
 /**
  * Data - Constructor.
- * @type: The type of data.
  *
- * This is the default constructor. It just clears the buffer.
+ * This constructor initializes the object.
  */
 Data::Data() {
+  m_type = Data::none_t;
   m_data.clear();
 }
 
@@ -58,16 +58,6 @@ Data::~Data() {
 }
 
 /**
- * set_type - Set data type.
- * @type: the type of data.
- *
- * This sets the type of the data object.
- */
-void Data::set_type(const Data::Type type) {
-  m_type = type;
-}
-
-/**
  * type - Get data type.
  *
  * This returns the type of the data object.
@@ -75,6 +65,28 @@ void Data::set_type(const Data::Type type) {
 Data::Type Data::type() {
   return m_type;
 }
+
+/**
+ * set_data - Set data.
+ * @data: the data to store.
+ * @type: the type of data.
+ *
+ * This stores the data to the data object.
+ */
+void Data::set_data(const string data, const Data::Type type) {
+  m_type = type;
+  m_data = data;
+}
+
+/**
+ * data_str - Return data string.
+ *
+ * This function returns the string that contains the data.
+ */
+std::string Data::data_str() {
+  return m_data;
+}
+
 
 /**
  * ----------------------------------------------------------
@@ -136,25 +148,6 @@ void Key::set_id(const string id) {
  */
 string Key::id() {
   return m_id;
-}
-
-/**
- * set_data - Set data.
- * @data: the data to store.
- *
- * This stores the data to the data object.
- */
-void Data::set_data(const string data) {
-  m_data = data;
-}
-
-/**
- * data_str - Return data string.
- *
- * This function returns the string that contains the data.
- */
-std::string Data::data_str() {
-  return m_data;
 }
 
 /**
@@ -387,8 +380,7 @@ int32_t KList::size_of_klist() {
 Data *KList::get_next_data() {
   if (m_it_data != m_data.end() && !m_data.empty()) {
     Data *result = new Data;
-    result->set_type((*m_it_data).type());
-    result->set_data((*m_it_data).data_str());
+    result->set_data((*m_it_data).data_str(), (*m_it_data).type());
     ++m_it_data;
     m_data.pop_front();
     return result;

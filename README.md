@@ -44,8 +44,7 @@ Configuration file general syntax
 ---------------------------------
 
 Here we give a basic overview of the configuration file syntax. You can find
-a detailed description of its grammar and syntax in docs/GRAMMAR.md and
-docs/SYNTAX.md respectively. 
+a detailed description of its grammar and syntax in docs/GRAMMAR.md.
 
 The configuration files that cofslice understands can contain a) entities and
 b) keys. Entities represent independent components and can contain other entities

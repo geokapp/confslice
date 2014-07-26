@@ -239,12 +239,12 @@ int32_t SyntaxAnalyzer::key_array(Configuration *conf_ptr, const string id) {
       // Add this value to the array.
       Data data;
       if (m_token_id == INTEGER_TK)
-	data.set_type(Data::int_t);
+	data.set_data(m_token_str, Data::int_t);
       else if (m_token_id == STRING_TK)
-	data.set_type(Data::string_t);
+	data.set_data(m_token_str, Data::string_t);
       else
-	data.set_type(Data::double_t);
-      data.set_data(m_token_str);
+	data.set_data(m_token_str, Data::double_t);
+      
       (*ka)[index] = data;
       
     } else {
@@ -289,12 +289,12 @@ int32_t SyntaxAnalyzer::key_list(Configuration *conf_ptr, const string id, KList
       // add this to the list.
       Data data;
       if (m_token_id == INTEGER_TK)
-	data.set_type(Data::int_t);
+	data.set_data(m_token_str, Data::int_t);
       else if (m_token_id == STRING_TK)
-	data.set_type(Data::string_t);
+	data.set_data(m_token_str, Data::string_t);
       else
-	data.set_type(Data::double_t);
-      data.set_data(m_token_str);
+	data.set_data(m_token_str, Data::double_t);
+
       (*klist)->insert_data(data);
     } else if (m_token_id == LBRACKETS4_TK) {
       KList *klist_nested = NULL;
@@ -362,14 +362,11 @@ int32_t SyntaxAnalyzer::key_pairs(Configuration *conf_ptr, const string id) {
 	  // Put this pair to the key.
 	  Data data;
 	  if (m_token_id == INTEGER_TK)
-	    data.set_type(Data::int_t);
+	    data.set_data(m_token_str, Data::int_t);
 	  else if (m_token_id == STRING_TK)
-	    data.set_type(Data::string_t);
+	    data.set_data(m_token_str, Data::string_t);
 	  else
-	    data.set_type(Data::double_t);
-	  data.set_data(m_token_str);
-	  kp_ptr->insert(pair_id, data);
-	  
+	    data.set_data(m_token_str, Data::double_t);
 	} else {
 	  fprintf(stderr, "Error at line %d: %s is not allowed here. A value was expected.\n",
 		  m_lex->line(), m_token_str.c_str());

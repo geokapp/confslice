@@ -157,13 +157,13 @@ An example follows:
       while (nested_entity = entity->get_next_entity()) {
          Key *key;
          while (key = nested_entity->get_next_key()) {
-            if (key->type == value_tk) {
+            if (key->type() == value_tk) {
                // a key value
                ...
-            } else if (key->type == array_t) {
+            } else if (key->type() == array_t) {
                // an array
                ...
-            } else if (key->type == list_t)
+            } else if (key->type() == list_t)
                // a list
                ...
             } else {// pair_t

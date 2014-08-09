@@ -659,7 +659,7 @@ Entity *Entity::get_next_entity() {
   if (m_it_entities != m_entities.end() && !m_entities.empty()) {
     Entity *entity = *m_it_entities;
     ++m_it_entities;
-    m_keys.pop_front();
+    m_entities.pop_front();
     return entity;
   } else {
     return NULL;
@@ -803,7 +803,7 @@ Entity *Configuration::get_next_entity() {
   if (m_it_entities != m_entities.end() && !m_entities.empty()) {
     Entity *entity = *m_it_entities;
     ++m_it_entities;
-    m_keys.pop_front();
+    m_entities.pop_front();
     return entity;
   } else {
     return NULL;

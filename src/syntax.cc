@@ -202,6 +202,16 @@ int32_t SyntaxAnalyzer::key(Configuration *conf_ptr, const string id) {
     // Add it to the configuration.
     KValue *kv = new KValue;
     kv->set_id(id);
+    // Set Value.
+    Data data;
+    if (m_token_id == INTEGER_TK)
+      data.set_data(m_token_str, Data::int_t);
+    else if (m_token_id == STRING_TK)
+      data.set_data(m_token_str, Data::string_t);
+    else
+      data.set_data(m_token_str, Data::double_t);
+    kv->set_value(data);
+    
     if (m_gc_ptr->current_entity())
       m_gc_ptr->current_entity()->add_key(kv);
     else
